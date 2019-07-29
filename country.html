@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="css/country.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">   
+<meta charset="UTF-8">
+</head>
+<body>
+ <title>
+     LifeDots | The Game Of Life
+ </title>
+ 
+<header>
+LifeDots
+</header>
+
+ <div id="H1div">
+     <h1></h1>
+ </div>
+
+ <div id="H3div">
+     <h3></h3>
+ </div>
+
+ <div id="countryinput"></div>
+
+ <a href="age.html">
+    <button id="submitbutton" value="SUBMIT">SUBMIT</button>
+ </a>
+ <script type="text/babel">
+
+    class EnglishTitle extends React.Component {
+        render() {
+            return (
+                <h1>{this.props.title}</h1>
+            );
+        }
+    }
+    class SpanishTitle extends React.Component {
+        render() {
+            return (
+                <h3>{this.props.title}</h3>
+            );
+        }
+    }
+
+    class CountryInput extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                input: ''
+            }
+        }
+        render() {
+            return (
+                <input onChange={e => localStorage.setItem("countryValue", e.target.value)}></input>
+            );
+        }
+    }
+    ReactDOM.render(<CountryInput/>, document.getElementById('countryinput'));
+    ReactDOM.render(<EnglishTitle title={"What is your country, " + localStorage.getItem("nameValue") + "?"}/>, document.getElementById('H1div'));
+    ReactDOM.render(<SpanishTitle title={"¿Cuál es tu país, " + localStorage.getItem("nameValue") + "?"}/>, document.getElementById('H3div'));
+
+</script>
+
+</body>

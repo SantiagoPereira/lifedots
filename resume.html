@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="css/resume.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+
+class BlueTime extends React.Component {
+    render() {
+        return (
+            <h1 id="blueyearsh1">{localStorage.getItem("ageValue")}</h1>
+        )
+    }
+} 
+
+class GreenTime extends React.Component {
+    render() {
+        return (
+            <h1 id="blueyearsh1">{localStorage.getItem("greenTime")}</h1>
+        )
+    }
+} 
+
+class RedTime extends React.Component {
+    render() {
+        return (
+            <h1 id="blueyearsh1">{localStorage.getItem("redTime")}</h1>
+        )
+    }
+} 
+
+ReactDOM.render(<BlueTime/>, document.getElementById("blueyears"))
+ReactDOM.render(<GreenTime/>, document.getElementById("greenyears"))
+ReactDOM.render(<RedTime/>, document.getElementById("redyears"))
+
+</script> 
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">   
+<meta charset="UTF-8">
+</head>
+<body>
+ <title>
+     LifeDots | The Game Of Life
+ </title>
+ 
+ <h1>
+  This is your result.   
+ </h1>
+
+ <h3>
+     Este es tu resultado.
+ </h3>
+
+  <div id="blueyears">
+      <h5>years / años</h5>
+    </div>
+
+    <div id="greenyears">
+        <h5>years / años</h5>
+    </div>
+
+    <div id="redyears">
+        <h5>years / años</h5>
+    </div>
+ 
+ <a id="playagainbutton" href="index.html">
+PLAY AGAIN </a>
+
+ <a id="jugardenuevobutton" href="index.html">
+JUGAR DE NUEVO
+ </a>
+</form>
+
+</body>

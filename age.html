@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="stylesheet" href="css/age.css">
+
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "data/lifeexpectancy.json";
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            myFunction(myArr);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function myFunction(arr) {
+        for(i = 0; i < arr.namesofcountries.length; i++) {
+            if(arr.namesofcountries[i].country == localStorage.getItem("countryValue"))
+            localStorage.setItem("lifeExpectancyValue", Math.round(arr.namesofcountries[i].expectancy))
+            console.log(localStorage.getItem("nameValue"))
+        }
+        
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+
+    class EnglishTitle extends React.Component {
+        render() {
+            return (
+                <h1>{this.props.title}</h1>
+            );
+        }
+    }
+    class SpanishTitle extends React.Component {
+        render() {
+            return (
+                <h3>{this.props.title}</h3>
+            );
+        }
+    }
+
+    class NameInput extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                input: ''
+            }
+        }
+        render() {
+            return (
+                <input onChange={e => localStorage.setItem("ageValue", e.target.value)}></input>
+            );
+        }
+    }
+    ReactDOM.render(<NameInput/>, document.getElementById('ageinput'));
+    ReactDOM.render(<EnglishTitle title={"What is your age, " + localStorage.getItem("nameValue") + "?"}/>, document.getElementById('H1div'));
+    ReactDOM.render(<SpanishTitle title={"¿Cuál es tu edad, " + localStorage.getItem("nameValue") + "?"}/>, document.getElementById('H3div'));
+
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">   
+<meta charset="UTF-8">
+</head>
+<body>
+ <title>
+     LifeDots | The Game Of Life
+ </title>
+ 
+<header>
+LifeDots
+</header>
+
+<div id="H1div">
+    <h1></h1>
+</div>
+   
+<div id="H3div">
+    <h3></h3>
+</div>
+
+ <input type="text" id="ageinput"> 
+
+ <a href="instructions.html">
+     <input type="submit" id="submitbutton" value="SUBMIT">
+ </a>
+
+</body>

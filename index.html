@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="css/index.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">   
+<meta charset="UTF-8">
+</head>
+<body>
+ <title>
+     LifeDots | The Game Of Life
+ </title>
+ 
+<header>
+LifeDots
+</header>
+
+ <h1 id="start">
+  Let's start. What is your name?   
+ </h1>
+
+ <h3>
+     Empecemos. ¿Cuál es tu nombre?
+ </h3>
+ <div id="textinput"></div>
+ 
+ <a href="http://localhost:8080/country.html">
+    <input type="submit" value="SUBMIT" id="submitbutton">
+ </a>
+</form>
+<script type="text/babel">
+    
+
+    class NameInput extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                input: ''
+            }
+        }
+        render() {
+            return (
+                <input onChange={e => localStorage.setItem("nameValue", e.target.value)}></input>
+            );
+        }
+    }
+    ReactDOM.render(<NameInput/>, document.getElementById('textinput'));
+</script>    
+</body>

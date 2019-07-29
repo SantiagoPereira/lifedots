@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="stylesheet" href="css/life.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">   
+<meta charset="UTF-8">
+</head>
+<body>
+ <title>
+     LifeDots | The Game Of Life
+ </title>
+
+ <h1 id="lifeh1">
+  This is your life.   
+ </h1>
+
+<h5 id="vidah5">
+  Esta es tu vida.   
+ </h1>
+
+<div id="life">
+</div>
+
+<p id="explanation">
+We've added green points to represent the time you'll spend sleeping.
+</p>
+
+<p id="explicación">
+Los puntos verdes representan el tiempo que pasarás durmiendo.
+</p>
+
+<a id="nextinstance" href="fourthinstance.html">
+LET'S KEEP GOING. 
+ </a>
+
+ <a id="próximainstancia" href="fourthinstance.html">
+QUIERO SEGUIR.
+ </a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+   class Life extends React.Component {
+      constructor(props) {
+         super(props);
+         this.state = {
+            num: localStorage.getItem("lifeExpectancyValue"),
+            count: 0,
+            items: []
+         }
+     }
+     componentWillMount() {
+         let arr = []
+         const age = parseInt(localStorage.getItem("ageValue"))
+         const work = Math.round((50 - age) / 3)
+         const sleep = Math.round((this.state.num - age - work) / 3)
+
+         for (let i = 0; i < this.state.num; i++) {
+
+           let style = {backgroundColor: this.state.count < age ? 'blue': 
+           this.state.count < age + work + sleep  ? 'green' : 'red'}
+
+           arr.push(<div className="year" key={i}>
+                         <div style={style} id="circle1"></div>
+                         <div style={style} id="circle2"></div>
+                         <div style={style} id="circle3"></div>
+                     </div>);
+           this.setState({count: this.state.count++, items: arr})
+         }
+      }
+      render() {
+         return (
+            <div>{this.state.items}</div>
+         );
+      }
+ }
+ ReactDOM.render(<Life/>, document.getElementById('life'));
+</script>
